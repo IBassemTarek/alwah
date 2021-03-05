@@ -37,6 +37,10 @@ flutter:
   assets:
     - assets/images/
     - assets/sounds/alwah intro.mp3
+    - assets/sounds/basmala.mp3
+    - assets/sounds/kalemat/
+    - assets/sounds/line/
+    - assets/sounds/sora/
 
 
   fonts:
@@ -49,3 +53,8 @@ flutter:
         - asset: assets/fonts/ArbFONTS-Uthmani-Hafs.otf
         - asset: assets/fonts/UthmanicHafs1_Ver13.ttf
         - asset: assets/fonts/UthmanicHafs1B_Ver13.ttf
+
+    - family: arial
+      fonts:
+        - asset: assets/fonts/arial.ttf
+

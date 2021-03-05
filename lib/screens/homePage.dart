@@ -16,7 +16,7 @@ import '../widget/pageNo.dart';
 import '../models.dart';
 import '../const.dart';
 import '../widget/oneCell.dart';
-// import "widgets/toRepeat.dart";
+import "../widget/toRepeat.dart";
 import '../widget/alert.dart';
 
 
@@ -635,10 +635,14 @@ setState(() {
                             
                             
                             //TODO::playSoraRepeated
-                            // playSoraRepeated(path: soraSoundPathOffline+soraNo.toString().padLeft(3, '0')+'.mp3', duration: soraDuration[soraNo-soraNoBuffer-1],advancedPlayer:advancedPlayer,audioCache:audioCache);
-                            
-                            
-                            
+                            if (timesToRepeat==1)
+                            {
+                                  await advancedPlayer?.stop();
+                                  audioCache.play(soraSoundPathOffline+soraNo.toString().padLeft(3, '0')+'.mp3');
+                            }
+                            else{
+                            playSoraRepeated(path: soraSoundPathOffline+soraNo.toString().padLeft(3, '0')+'.mp3', duration: soraDuration[soraNo-soraNoBuffer-1],advancedPlayer:advancedPlayer,audioCache:audioCache);
+                            }
                             // setState(() {
                             // timesToRepeat=6;  
                             // });
@@ -743,21 +747,20 @@ setState(() {
                                     style: Theme.of(context).textTheme.subtitle1,
                                   ),
                                 ),
-                  //  onTap: ()async {
                       onTap: () async {
                         //TODO:Basmala Local
                               advancedPlayer?.stop();
                               audioCache.play(basmalSoundaOffline);
                               // print(await getDuration());
-                              
                               //TODO::playSoraRepeated
-                              // playSoraRepeated(path:basmalSoundaOffline, duration:4008,audioCache: audioCache,advancedPlayer: advancedPlayer );
-                              
-                              
-                              // int result = await advancedPlayer.play(basmalSoundaPath);
-                    // if (result == 1) {
-                    
-                    // }
+                             if (timesToRepeat==1)
+                            {
+                                  await advancedPlayer?.stop();
+                                  audioCache.play(basmalSoundaOffline);
+                            }
+                            else{
+                              playSoraRepeated(path:basmalSoundaOffline, duration:4008,audioCache: audioCache,advancedPlayer: advancedPlayer );
+                            }                              
                   },
                               ),
                             
