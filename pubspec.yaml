@@ -1,0 +1,51 @@
+name: flutter_offline
+description: A new Flutter project.
+
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+
+Settings:
+  enable-web: false
+  enable-windows-desktop: false
+
+dependencies:
+  flutter:
+    sdk: flutter
+  audioplayers: ^0.17.4
+  cupertino_icons: ^1.0.2
+  flutter_svg: ^0.19.3
+  page_indicator: ^0.3.0
+  path_provider: ^1.6.4
+  shared_preferences: ^0.5.12+4
+  url_launcher: ^6.0.2
+dev_dependencies:
+  flutter_launcher_icons: "^0.8.0"
+
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/images/icon.png"
+
+flutter:
+
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+    - assets/sounds/alwah intro.mp3
+
+
+  fonts:
+    - family: Hafs
+      fonts:
+        - asset: assets/fonts/ArbFONTS-Hafs-Font-v0.09.otf
+        - asset: assets/fonts/ArbFONTS-KFGQPC Uthmanic Script HAFS.otf
+        - asset: assets/fonts/ArbFONTS-KFGQPC-Uthmanic-Script-HAFS-Regular.otf
+        - asset: assets/fonts/ArbFONTS-KFGQPC-Uthmanic-Script-HAFS-Regular-1.otf
+        - asset: assets/fonts/ArbFONTS-Uthmani-Hafs.otf
+        - asset: assets/fonts/UthmanicHafs1_Ver13.ttf
+        - asset: assets/fonts/UthmanicHafs1B_Ver13.ttf
