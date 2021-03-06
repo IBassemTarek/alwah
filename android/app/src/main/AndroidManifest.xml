@@ -1,8 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.flutter_offline">
+    package="com.example.alwah">
    <application
-        android:label="flutter_offline"
-        android:icon="@mipmap/launcher_icon">
+        android:label="alwah"
+        android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"

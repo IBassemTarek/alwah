@@ -1,7 +1,7 @@
  import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:audioplayers/audio_cache.dart';
-import 'package:flutter_offline/widget/toRepeatG.dart';
+import '../widget/toRepeatG.dart';
 import '../const.dart';
 import '../models.dart';
  Widget oneCell({double height, String text,int soraNumber,int rowNumber, int kelmaNumber ,AudioPlayer advancedPlayer,BuildContext context,AudioCache audioCache}) {
@@ -15,11 +15,12 @@ import '../models.dart';
           child: Text(
             "$text",
             textAlign: TextAlign.center,
-            style: Theme.of(context).textTheme.subtitle1,
+            style: Theme.of(context).textTheme.subtitle1.copyWith(fontSize: 16),
             textScaleFactor: 1.5,
           ),
         ),
       ),
+      //TODO::make again
       onTap: ()async {
         if (kelmaNumber==0 || text == ' ' ) {
 // print('no data');

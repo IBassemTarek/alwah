@@ -1,4 +1,4 @@
-name: flutter_offline
+name: alwah
 description: A new Flutter project.
 
 publish_to: 'none'
@@ -31,6 +31,16 @@ flutter_icons:
   image_path: "assets/images/icon.png"
 
 flutter:
+  plugin:
+    platforms:
+      macos:
+        default_package: <plugin-implementation>
+      linux:
+        default_package: <plugin-implementation>
+      windows:
+        default_package: <plugin-implementation>
+    implements: <plugin-interface>
+
 
   uses-material-design: true
 

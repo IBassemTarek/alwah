@@ -1,7 +1,7 @@
 import 'package:audioplayers/audio_cache.dart';
 import 'package:audioplayers/audioplayers.dart';
 import '../models.dart';
-//kalemaSoundPathOffline+soraNumber.toString()+'-'+rowNumber.toString()+'-('+kelmaNumber.toString()+').mp3'
+
 repeaterGeneral ({String path , AudioPlayer advancedPlayer, AudioCache audioCache}) async {
           int duration;
                  advancedPlayer?.stop();

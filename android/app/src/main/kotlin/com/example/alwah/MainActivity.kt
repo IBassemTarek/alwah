@@ -1,4 +1,4 @@
-package com.example.flutter_offline
+package com.example.alwah
 
 import io.flutter.embedding.android.FlutterActivity
 
