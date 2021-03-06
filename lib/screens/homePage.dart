@@ -5,10 +5,12 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart';
+
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
-
+//local
+import '../widget/toRepeatG.dart';
 import '../widget/customExpansionTile.dart' as custom;
 import '../widget/pageRouteAnimation.dart';
 import 'onBoarding.dart';
@@ -16,7 +18,6 @@ import '../widget/pageNo.dart';
 import '../models.dart';
 import '../const.dart';
 import '../widget/oneCell.dart';
-import "../widget/toRepeat.dart";
 import '../widget/alert.dart';
 
 
@@ -239,12 +240,12 @@ for (int i=0; i<myavouriteLoh.length;i++)
 final _scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
+
           SystemChrome.setPreferredOrientations([
         DeviceOrientation.portraitUp,
       ]);
     final _height = MediaQuery.of(context).size.height;
     final _width = MediaQuery.of(context).size.width;
-
     return Scaffold(
       key: _scaffoldKey,
         drawer: Drawer(
@@ -263,14 +264,13 @@ final _scaffoldKey = GlobalKey<ScaffoldState>();
                 ],
               ),
             ),
-
-
             Directionality(
                          textDirection: TextDirection.rtl,
                           child: custom.ExpansionTile(
                             initiallyExpanded: false,
                             headerBackgroundColor: isExpanded1  ? kPrimaryColor : Colors.transparent,
                             iconColor: Colors.black,
+                            backgroundColor: kBorderColor,
                             onExpansionChanged: (bool expanding) => setState(() => this.isExpanded1 = expanding),
                   title: Text('اخْتَر السُّورَة',
                       style: Theme.of(context).textTheme.subtitle1.copyWith(fontSize: 22)),
@@ -344,6 +344,7 @@ final _scaffoldKey = GlobalKey<ScaffoldState>();
                             onExpansionChanged: (bool expanding) => setState(() => this.isExpanded2 = expanding),
                             title: Text('الْأَلْوَاح الْمَحْفُوظَة',
                       style: Theme.of(context).textTheme.subtitle1.copyWith(fontSize: 22)),
+                      backgroundColor: kBorderColor,
                      children: [
                        ListView.builder(
                          shrinkWrap: true,
@@ -426,6 +427,7 @@ final _scaffoldKey = GlobalKey<ScaffoldState>();
                             initiallyExpanded: false,
                             headerBackgroundColor: isExpanded3  ? kPrimaryColor : Colors.transparent,
                             iconColor: Colors.black,
+                            backgroundColor: kBorderColor,
                             onExpansionChanged: (bool expanding) => setState(() => this.isExpanded3 = expanding),
                             title: Text('الْحِفْظ بِالتَّكْرَار',
                       style: Theme.of(context).textTheme.subtitle1.copyWith(fontSize: 22)),
@@ -449,18 +451,20 @@ final _scaffoldKey = GlobalKey<ScaffoldState>();
                             Container(
                                     width:60,
                                     height: 30,
+                                    color: Colors.white,
                                     child: TextField(
                                     cursorHeight: 20,
                                     keyboardType: TextInputType.number,
                                     textAlign: TextAlign.center,
+                                    cursorColor: kGreyColor,
                                     decoration: InputDecoration(
                                     border: OutlineInputBorder(),
                                     labelText: '...      ',
                                     ),
                                     onChanged: (value){
                                         setState(() {
-                                        if (timesToRepeat!=0 ||timesToRepeat!=null)
-                                        timesToRepeat= int.parse(value);
+                                        if (timesToRepeat!=0 && timesToRepeat!=null)
+                                        timesToRepeat= int.parse(value, onError: (source) => -1);
                                         else {
                                           timesToRepeat=1;
                                         }
@@ -468,22 +472,24 @@ final _scaffoldKey = GlobalKey<ScaffoldState>();
                                     },
                                     ),
                                   ),
-
-
                     Container(
                 margin:  const EdgeInsets.only(top:10,left:15,bottom:8,right:15),
                height: _height * 0.04,
                width: _width/2,
               decoration: BoxDecoration(
+                color: Colors.white,
                 border: Border.all(color: kGreyColor),
                 borderRadius: BorderRadius.all(Radius.circular(20.0),),
                   ),
                     child: InkWell(
+                      splashColor: kSecondColor,
                       highlightColor: Colors.transparent,
           onTap: (){
                     Navigator.of(context).pop();
           },
-                     child: Center(child: Text("موافق",style:TextStyle(color: kPrimaryColor))),
+                     child: Container(
+
+                       child: Center(child: Text("موافق",style:TextStyle(color: kPrimaryColor)))),
                     ),
                   ),
 
@@ -501,6 +507,7 @@ final _scaffoldKey = GlobalKey<ScaffoldState>();
                             initiallyExpanded: false,
                             headerBackgroundColor: isExpanded4 ? kPrimaryColor : kGreyColor2,
                             iconColor: Colors.black,
+                            backgroundColor: kBorderColor,
                             onExpansionChanged: (bool expanding) => setState(() => this.isExpanded4 = expanding),
                             title: Text('قُم بِشِرَاء الْمُنْتِج',
                       style: Theme.of(context).textTheme.subtitle1.copyWith(fontSize: 22)),
@@ -509,26 +516,31 @@ final _scaffoldKey = GlobalKey<ScaffoldState>();
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
                             Container(
+                              margin: EdgeInsets.only(top:10),
                               width: _width/1.4,
                               child: Text('قم بزيارة متجرنا لشراء الألواح و التعرف علي المزيد من منتجاتنا',style: Theme.of(context).textTheme.subtitle1.copyWith(fontSize: 20))),
-                          InkWell(
-                                 onTap: (){
-                                    _launchURL(url: "https://www.moslimleader.com/product/%d8%b9%d8%b1%d8%b6-%d8%a3%d9%84%d9%88%d8%a7%d8%ad-%d9%85%d9%86-%d8%a7%d9%84%d9%86%d8%a8%d8%a3-%d9%84%d9%84%d9%86%d8%a7%d8%b3/" ); 
-                                  },
-                              child: Container(
-                              width: double.infinity,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                children: [
-                                  Text('www.moslimleader.com',style: Theme.of(context).textTheme.bodyText2.copyWith(fontSize: 18) ),
+                          Container(
+                            margin: EdgeInsets.only(bottom:10),
+                            child: InkWell(
+                               splashColor: kSecondColor,
+                                   onTap: (){
+                                      _launchURL(url: "https://www.moslimleader.com/product/%d8%b9%d8%b1%d8%b6-%d8%a3%d9%84%d9%88%d8%a7%d8%ad-%d9%85%d9%86-%d8%a7%d9%84%d9%86%d8%a8%d8%a3-%d9%84%d9%84%d9%86%d8%a7%d8%b3/" ); 
+                                    },
+                                child: Container(
+                                width: double.infinity,
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                  children: [
+                                    Text('www.moslimleader.com',style: Theme.of(context).textTheme.bodyText2.copyWith(fontSize: 18) ),
                       
-                              Image(
-                              image: AssetImage("assets/images/product.png"),
-                              height: 80,
-                              width: 80,
+                                Image(
+                                image: AssetImage("assets/images/product.png"),
+                                height: 80,
+                                width: 80,
                         ),
                         
-                                ],
+                                  ],
+                                ),
                               ),
                             ),
                           )
@@ -603,37 +615,15 @@ setState(() {
               prefs.setStringList("myavouriteLoh", myavouriteLoh);
             },
             ),
+            //TODO::make again
             simplePopup(height: _height,width: _width),
-            // InkWell(
-            //   onTap:(){
-            //     simplePopup(height: _height,width: _width);
-            //   },
-            //     child: PageNo(
-            //     ourHeight: _height,
-            //     ourWidth: _width,
-            //     soraAlwahNo:soraAlwahNo, currentLoh: currentLoh ,
-            //   ),
-            // ),
           ],
           title: Center(
             child: InkWell(
                 highlightColor:kSecondColor,
                  onTap: () async {
                     //TODO:Sora Local and audio to repeate
-                      // await advancedPlayer?.stop();
-                      //  audioCache.play(soraSoundPathOffline+soraNo.toString().padLeft(3, '0')+'.mp3');
-                // onTap: ()async {
-                                                    //  await loadFile();
-                                                    //  Uri soraInternalPath = await fetchAudio(soraSoundPath+soraNo.toString().padLeft(3, '0')+'.mp3','saveTest'); 
-                                                    //  int result = await advancedPlayer.play(localFilePath, isLocal: true);
-                                                    //  print(soraInternalPath);
-                // int result = await advancedPlayer.play(soraSoundPath+soraNo.toString().padLeft(3, '0')+'.mp3');
-                // print(soraSoundPath+soraNo.toString().padLeft(3, '0')+'.mp3');
-                //  if (result == 1) {
-                //  } 
-                            // soraAlertDialog(context: context);
-                            
-                            
+                    //TODO::make again
                             //TODO::playSoraRepeated
                             if (timesToRepeat==1)
                             {
@@ -641,23 +631,12 @@ setState(() {
                                   audioCache.play(soraSoundPathOffline+soraNo.toString().padLeft(3, '0')+'.mp3');
                             }
                             else{
-                            playSoraRepeated(path: soraSoundPathOffline+soraNo.toString().padLeft(3, '0')+'.mp3', duration: soraDuration[soraNo-soraNoBuffer-1],advancedPlayer:advancedPlayer,audioCache:audioCache);
+                            // playSoraRepeated(path: soraSoundPathOffline+soraNo.toString().padLeft(3, '0')+'.mp3', duration: soraDuration[soraNo-soraNoBuffer-1],advancedPlayer:advancedPlayer,audioCache:audioCache);
+                            repeaterGeneral(path: soraSoundPathOffline+soraNo.toString().padLeft(3, '0')+'.mp3' ,advancedPlayer:advancedPlayer,audioCache:audioCache);
                             }
-                            // setState(() {
-                            // timesToRepeat=6;  
-                            // });
-                            
-                            // print(timesToRepeat);
-                            // await advancedPlayer?.stop();
-                            // await audioCache.play(basmalSoundaOffline);
-                            // int y= await advancedPlayer.getDuration();                            
-                            // await audioCache.loop(basmalSoundaOffline);
-                            // Duration z= Duration(milliseconds:timesToRepeat*y );
-                            // await new Future.delayed(z).then((value) => 
-                            // advancedPlayer.stop()
-                            // );
-                            // await advancedPlayer?.stop();
+
               },
+              //TODO::make again
               onLongPress: (){
                 soraAlertDialog(context: context);
               },
@@ -687,13 +666,14 @@ setState(() {
             for (int j=0; j < soraAlwahNo; j++)
               SafeArea(
                 child: SingleChildScrollView(
+                  physics: NeverScrollableScrollPhysics(),
                   dragStartBehavior: DragStartBehavior.down,
                             child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
-                          height: _height / 13,
+                          height: _height *0.077,
                           decoration: BoxDecoration(
                             color: kCellColor2,
                             border: Border.all(
@@ -753,13 +733,15 @@ setState(() {
                               audioCache.play(basmalSoundaOffline);
                               // print(await getDuration());
                               //TODO::playSoraRepeated
+                              //TODO::make again
                              if (timesToRepeat==1)
                             {
                                   await advancedPlayer?.stop();
                                   audioCache.play(basmalSoundaOffline);
                             }
                             else{
-                              playSoraRepeated(path:basmalSoundaOffline, duration:4008,audioCache: audioCache,advancedPlayer: advancedPlayer );
+                              repeaterGeneral(path:basmalSoundaOffline ,audioCache: audioCache,advancedPlayer: advancedPlayer);
+                              // playSoraRepeated(path:basmalSoundaOffline, duration:4008,audioCache: audioCache,advancedPlayer: advancedPlayer );
                             }                              
                   },
                               ),
