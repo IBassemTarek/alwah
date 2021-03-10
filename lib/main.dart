@@ -11,8 +11,6 @@ import 'dart:async';
 void main() {
   runApp(MyApp());
 }
-// name , phone , quantity  ,  price , price of trans 
-
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override

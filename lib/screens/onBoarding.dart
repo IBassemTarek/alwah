@@ -37,7 +37,7 @@ class _OnBoardingState extends State<OnBoarding> {
                 padding: EdgeInsets.zero,
                 shape: IndicatorShape.roundRectangleShape(
                     size: Size(25, 10), cornerSize: Size.square(5)),
-                length: 3,
+                length: 6,
                 child: PageView(
                   children: onBoardingModel
                       .map((e) => BodyOnBoarding(
@@ -127,19 +127,31 @@ class BodyOnBoarding extends StatelessWidget {
 
 List<OnBoardingModel> onBoardingModel = [
   OnBoardingModel(
-      mainTitle: "تعلم بالاسلوب الذي ينسابك",
-      subTitle: "مصادر تعلم متنوعة",
-      imageAsset: 'assets/images/product.png'),
+      mainTitle: "إقرأ و إستمع",
+      subTitle: "تعلم بأبسط الطرق",
+      imageAsset: 'assets/images/onboarding/1.png'),
   OnBoardingModel(
-      mainTitle: "مقاطع الفيديو والمقالات والألعاب",
-      subTitle: "وصول مجاني في أي وقت وفي أي مكان",
-      imageAsset: 'assets/images/product.png'),
+      mainTitle: "القائمة الجانبية",
+      subTitle: "يوجد بها العديد من المميزات التي تحسن من تجربة إستخدامك",
+      imageAsset: 'assets/images/onboarding/2.png'),
   OnBoardingModel(
-      mainTitle: "إلعب وتعلم",
-      subTitle: "قم بزيادة مهاراتك في حل المشكلات",
-      imageAsset: 'assets/images/product.png'),
+      mainTitle: "قائمة إختر سورة",
+      subTitle: "لعرض لوح محدد من السورة",
+      imageAsset: 'assets/images/onboarding/3.png'),
+  OnBoardingModel(
+      mainTitle: "قائمة الألواح المحفوظة",
+      subTitle: "إضغط لعرض اللوح المحفوظ أو إسحب لحذفه",
+      imageAsset: 'assets/images/onboarding/4.png'),
+  OnBoardingModel(
+      mainTitle: "قائمة الحفظ بالتكرار",
+      subTitle: "يمكنك زيادة معدل التكرار قم بكتابته و إضعط موافق",
+      imageAsset: 'assets/images/onboarding/5.png'),
+  OnBoardingModel(
+      mainTitle: "التنقل بين ألواح السورة الحالية",
+      subTitle: "يمكنك تصفح الألواح بطريقة سريعة",
+      imageAsset: 'assets/images/onboarding/6.png'), 
 ];
-
+ 
 class OnBoardingModel {
   final String mainTitle;
   final String subTitle;

@@ -46,11 +46,13 @@ flutter:
 
   assets:
     - assets/images/
+    - assets/images/onboarding/
     - assets/sounds/alwah intro.mp3
     - assets/sounds/basmala.mp3
     - assets/sounds/kalemat/
     - assets/sounds/line/
     - assets/sounds/sora/
+    
 
 
   fonts:

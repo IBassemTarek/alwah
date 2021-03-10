@@ -5,7 +5,6 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart';
-
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -127,7 +126,7 @@ _launchURL({String url}) async {
   if (await canLaunch(url)) {
     await launch(url);
   } else {
-    throw 'Could not launch';
+    throw 'Could not be connect';
   }
 }
   // ignore: missing_return
@@ -176,7 +175,7 @@ for (int i=0; i<myavouriteLoh.length;i++)
 
 
 
-
+//TODO::make again
   soraAlertDialog({BuildContext context}) {
   // set up the button
   Widget okButton = InkWell(
@@ -464,7 +463,7 @@ final _scaffoldKey = GlobalKey<ScaffoldState>();
                                     onChanged: (value){
                                         setState(() {
                                         if (timesToRepeat!=0 && timesToRepeat!=null)
-                                        timesToRepeat= int.parse(value, onError: (source) => -1);
+                                        timesToRepeat= int.parse(value, onError: (source) => 1);
                                         else {
                                           timesToRepeat=1;
                                         }
