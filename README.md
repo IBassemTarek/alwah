@@ -1,7 +1,6 @@
 # alwah
 
-“Alwah” is an application to teach reading Qur’an for children and adults - the idea is inspired by the system of Qur’an Alwah used in writers’ circles in the past. The first version of the program contains: Al-Fatihah + Ayat Al-Kursi + a complete Amma part.
-This project is not for profit, Its purpose is to draw closer to God.
+This application is intended to provide resources for kindergarten teachers to learn how to deal with children in the right way that does not affect their future.
 
 ## Project Phases
 
